@@ -28,10 +28,11 @@ FROM rust:1.99-slim AS builder
 WORKDIR /build
 COPY rust/Cargo.toml rust/Cargo.lock rust/rust-toolchain.toml rust/clippy.toml ./
 COPY rust/crates ./crates
+COPY rust/xtask ./xtask
 RUN cargo build --release -p dropagentx-server
 
 # ── مرحلهٔ ۲ — runtime (distroless، غیر-root) ───────────────────────────────
-FROM gcr.io/distroless/cc-debian12:nonroot AS runtime
+FROM gcr.io/distroless/cc-debian12 AS runtime
 WORKDIR /app
 
 COPY --from=builder /build/target/release/dropagentx-server /app/dropagentx-server
