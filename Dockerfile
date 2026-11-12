@@ -14,7 +14,7 @@
 # ── مرحلهٔ ۰ — استاتیک ترکیبی (فاز ۷) ───────────────────────────────────────
 FROM node:24-slim AS static
 WORKDIR /front
-COPY front/package.json front/pnpm-lock.yaml front/pnpm-workspace.yaml front/env.d.ts ./
+COPY front/package.json front/pnpm-lock.yaml front/pnpm-workspace.yaml front/env.d.ts front/tsconfig.base.json ./
 COPY front/apps ./apps
 COPY front/packages ./packages
 COPY front/scripts ./scripts
