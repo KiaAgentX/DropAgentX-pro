@@ -43,6 +43,5 @@ ENV HOST=0.0.0.0 \
     STATIC_DIR=/app/dashboard
 
 EXPOSE 3000
-VOLUME ["/data"]
 
 ENTRYPOINT ["/app/dropagentx-server"]
